@@ -4,11 +4,12 @@ import spotipy
 import spotipy.util as util
 import spotipy.oauth2 as oauth
 from config import USERNAME, CLIENT_ID, CLIENT_SECRET, SCOPE, REDIRECT_URI
-#TODO setup config
+
 
 
 token = util.prompt_for_user_token(USERNAME,SCOPE,
         client_id=CLIENT_ID,client_secret=CLIENT_SECRET,redirect_uri=REDIRECT_URI)
+
 
 print("token " + token)
 
