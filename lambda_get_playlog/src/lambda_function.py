@@ -5,23 +5,22 @@ import datetime
 from config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 
-
 def lambda_handler(event, context):
     playlog = get_playlog()
-    print(playlog)
     upload_s3(playlog)
-
 
 
 def upload_s3(playlog):
 
-#    playlog_string = str(playlog)
     playlog_string = json.dumps(playlog)
 
-    s3 = boto3.resource('s3')
-    s3.Object('cbc-radio-2-spotify', 'playlog.json') \
-            .put(Body=playlog_string)
+    s3 = boto3.client(
+        's3',
+        aws_access_key_id=AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+    )
 
+    s3.put_object(Body=playlog_string, Bucket='cbc-radio-2-spotify', Key='playlog.json')
 
 
 def get_playlog():
@@ -40,11 +39,4 @@ def get_playlog():
     return playlog
 
 
-
-
-
-
-
-
-#lambda_handler(None, None)
 

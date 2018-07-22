@@ -1,3 +1,5 @@
+# A simple packaging script. This will create a zip (deploy.zip) which can be
+# uploaded to AWS Lambda
 
 echo "Creating deployment package"
 
@@ -16,6 +18,5 @@ cd ..
 
 echo "cleaning up"
 rm -rf deploy
- 
-echo "done"
 
+echo "done"
