@@ -1,11 +1,9 @@
-#!/bin/bash
-# My first script
 
 echo "Creating deployment package"
 
 mkdir deploy
 
-echo "Copying src files"
+echo "Copying source (/src) files"
 cp -r src/* deploy
 
 echo "Copying virtualenv (/env) files"
