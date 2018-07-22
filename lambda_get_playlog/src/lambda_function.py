@@ -2,6 +2,7 @@ import boto3
 import requests
 import json
 import datetime
+from config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 
 
@@ -32,7 +33,7 @@ def get_playlog():
     url = "https://www.cbcmusic.ca/Component/Playlog/GetPlaylog?stationId=110&date={}-{}-{}"\
             .format(year, month, day)
 
-#    print(url)
+    print(url)
     res = requests.get(url)
     playlog = res.json()
 
@@ -46,3 +47,4 @@ def get_playlog():
 
 
 #lambda_handler(None, None)
+
