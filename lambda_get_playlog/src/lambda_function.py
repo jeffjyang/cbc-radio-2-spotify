@@ -24,7 +24,9 @@ def upload_s3(playlog):
 
 
 def get_playlog():
-    now = datetime.datetime.now()
+
+    now = datetime.datetime.now() - datetime.timedelta(weeks=1)
+
     year = now.year
     month = now.month
     day = now.day
@@ -32,11 +34,7 @@ def get_playlog():
     url = "https://www.cbcmusic.ca/Component/Playlog/GetPlaylog?stationId=110&date={}-{}-{}"\
             .format(year, month, day)
 
-    print(url)
     res = requests.get(url)
     playlog = res.json()
 
     return playlog
-
-
-

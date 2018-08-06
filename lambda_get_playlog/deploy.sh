@@ -11,12 +11,12 @@ cp -r src/* deploy
 echo "Copying virtualenv (/env) files"
 cp -r env/* deploy
 
-echo "zipping"
+echo "Zipping..."
 cd deploy
 zip -r ../deploy.zip .
 cd ..
 
-echo "cleaning up"
+echo "Cleaning up"
 rm -rf deploy
 
-echo "done"
+echo "Done"
