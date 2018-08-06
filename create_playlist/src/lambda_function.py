@@ -1,53 +1,47 @@
-import s3_utils 
-
-from spotify_utils import search_spotify, get_track_id, add_tracks_to_playlist
-
+import s3_utils
+import spotify_utils
+from config import PLAYLISTS
 
 def lambda_handler(event, context):
 
+    reset_playlists()
+
     playlog = s3_utils.get_playlog()
-    
-    programs = playlog.get("programs")
-    program = programs[0] 
 
-    all_tracks = []
+    playlist_num = 0
 
+    for program in playlog.get("programs"):
 
-    tracks = program.get("Tracks")
+        if playlist_num >= len(PLAYLISTS):
+            # We're out of playlists to use
+            # TODO log this
+            return
 
-    for track in tracks:
+        playlist_id = PLAYLISTS[playlist_num]
 
-        
-        results = search_spotify(track.get("Title"), track.get("Album")) 
-        track_id = get_track_id(results)
+        all_tracks = []
 
-        if track_id:
+        title = "CBC Music: " + program.get("Title")
 
-            all_tracks.append(track_id)
+        for track in program.get("Tracks"):
 
+            results = spotify_utils.search_spotify(track.get("Title"), track.get("Album"))
+            track_id = spotify_utils.get_track_id(results)
 
-    print(all_tracks)
-
-    add_tracks_to_playlist(None, all_tracks) 
-    
-    print("done adding tracks")
-
- 
-#    track = program.get("Tracks")[0]
-#    print(track)
-#    print("searching for track")
-#    results = search_spotify(track.get("Title"), track.get("Album")) 
-#    track_id = get_track_id(results)
+            if track_id:
+                all_tracks.append(track_id)
 
 
- 
-#    for program in programs:
-#        print(program)
-        
-        
-    
+        spotify_utils.add_tracks_to_playlist(playlist_id, all_tracks)
+        spotify_utils.update_name(playlist_id, title)
+
+        playlist_num += 1
 
 
-lambda_handler(None, None)
+def reset_playlists():
+    for playlist in PLAYLISTS:
+        spotify_utils.remove_all_tracks(playlist)
+        spotify_utils.update_name(playlist, "Inactive")
+
 
 
