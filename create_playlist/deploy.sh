@@ -5,11 +5,11 @@ echo "Creating deployment package"
 
 mkdir deploy
 
-echo "Copying source (/src) files"
-cp -r src/* deploy
+echo "Copying source files (/src)"
+cp -r src/. deploy # copy hidden files as well
 
-echo "Copying virtualenv (/env) files"
-cp -r env/* deploy
+echo "Copying virtualenv libraries (/env/lib/python3.6/site-packages)"
+cp -r env/lib/python3.6/site-packages/* deploy
 
 echo "Zipping..."
 cd deploy

@@ -25,7 +25,7 @@ def upload_s3(playlog):
 
 def get_playlog():
 
-    now = datetime.datetime.now() - datetime.timedelta(weeks=1)
+    now = datetime.datetime.utcnow() - datetime.timedelta(hours=7, weeks=1)
 
     year = now.year
     month = now.month
@@ -37,4 +37,8 @@ def get_playlog():
     res = requests.get(url)
     playlog = res.json()
 
+    playlog["timestamp"] = now.isoformat()
+
     return playlog
+
+

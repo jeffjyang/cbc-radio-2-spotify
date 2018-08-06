@@ -42,6 +42,3 @@ def reset_playlists():
     for playlist in PLAYLISTS:
         spotify_utils.remove_all_tracks(playlist)
         spotify_utils.update_name(playlist, "Inactive")
-
-
-
