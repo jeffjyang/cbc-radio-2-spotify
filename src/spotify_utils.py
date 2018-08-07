@@ -2,7 +2,6 @@ import sys
 import spotipy
 import spotipy.util as util
 import spotipy.oauth2 as oauth
-import json
 from config import USERNAME, CLIENT_ID, CLIENT_SECRET, SCOPE, REDIRECT_URI
 
 
@@ -18,17 +17,14 @@ def search_spotify(track, album):
 
     results = spotify.search(q=query, type='track', limit=10)
 
-    return results
-
-
-def get_track_id(results):
     items = results.get("tracks").get("items")
 
     if not items:
-        print("track not found")
+        print("No results for query: " + query)
         return ""
 
     track_id = items[0].get("id")
+
     return track_id
 
 

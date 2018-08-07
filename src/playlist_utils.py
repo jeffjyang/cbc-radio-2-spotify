@@ -1,12 +1,7 @@
-import s3_utils
 import spotify_utils
 from config import PLAYLISTS
 
-def lambda_handler(event, context):
-
-    reset_playlists()
-
-    playlog = s3_utils.get_playlog()
+def create_playlists(playlog):
 
     playlist_num = 0
 
@@ -25,12 +20,10 @@ def lambda_handler(event, context):
 
         for track in program.get("Tracks"):
 
-            results = spotify_utils.search_spotify(track.get("Title"), track.get("Album"))
-            track_id = spotify_utils.get_track_id(results)
+            track_id = spotify_utils.search_spotify(track.get("Title"), track.get("Album"))
 
             if track_id:
                 all_tracks.append(track_id)
-
 
         spotify_utils.add_tracks_to_playlist(playlist_id, all_tracks)
         spotify_utils.update_name(playlist_id, title)
