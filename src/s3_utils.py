@@ -15,6 +15,6 @@ def upload_s3(playlog):
 
     now = datetime.datetime.utcnow() + datetime.timedelta(hours=UTC_OFFSET, weeks=-1)
 
-    key = "playlog-" + now.strftime("%Y-%m-%d")
+    key = "playlog-" + now.strftime("%Y-%m-%d") + ".json"
 
     s3.put_object(Body=playlog_string, Bucket='cbc-radio-2-spotify', Key=key)
