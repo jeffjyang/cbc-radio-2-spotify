@@ -1,8 +1,7 @@
 # cbc-radio-2-spotify
 
 A project to get CBC Music (CBC Radio 2) onto a dynamically generated Spotify playlist using an AWS
-Lambda scheduled task. A separate playlist for each of CBC Music's programs of the day will be created
-in Spotify everyday.
+Lambda scheduled task. Everday a playlist for each of CBC Music's programs will be created.
 
 
 # Setup
