@@ -56,7 +56,7 @@ the canonical user ID for your IAM user
 ### Lambda
 1. Create a Python 3.6 runtime AWS Lambda function
 2. Set the timeout of the Lambda function to a few minutes
-    - From my experience this script takes roughly 1 to 2 minutes to execute
+    - This script tends to take roughly 1 to 2 minutes to execute
 2. Add an CloudWatch Events trigger with the following scheduled rule: `cron(0 7 * * ? *)`
     - Note this is assuming PDT timezone
 
@@ -87,4 +87,4 @@ remove all tracks from the playlist and rename it to "Inactive".
 
 The choice of creating 10 playlists is to ensure that we will not run out of playlists to use on
 days where CBC Music has a relatively large number of programs. This tends to be about 8 programs
-per day. 
+per day.
