@@ -35,7 +35,7 @@ $ deactivate
 5. For each of your playlists paste the playlist id into `config.py`
   - Navigate to each of your playlists in the Spotify web player, your playlist id will be in the url
   (i.e. https://open.spotify.com/user/[username]/playist/[playlist_id])
-6. Run `python3 spotify_token_cli_tool.py` to create a Spotify access token that will be used by the script
+6. Run `python3 spotify_token_cli_tool.py` to generate a Spotify access token that will be used by the script
 
 ## AWS setup
 
