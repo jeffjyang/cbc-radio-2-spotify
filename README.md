@@ -37,7 +37,7 @@ $ deactivate
 5. For each of your playlists paste the playlist id into `config.py`
     - Navigate to each of your playlists in the Spotify web player, your playlist id will be in the url
     (i.e. https://open.spotify.com/user/[username]/playist/[playlist_id])
-    - See [Discussion](#discussion) for the reasoning behind this 
+    - See [Discussion](#discussion) for the reasoning behind this
 6. Run `$ python3 spotify_token_cli_tool.py` to generate a Spotify access token that will be used by the script
 
 ## AWS setup
@@ -86,5 +86,5 @@ it wants to add tracks to it. Likewise, if Spotipy wants to "delete" a playlist,
 remove all tracks from the playlist and rename it to "Inactive".
 
 The choice of creating 10 playlists is to ensure that we will not run out of playlists to use on
-days where CBC Music has a relatively large number of programs. From my experience the number of programs
-each day on CBC Music tends to top out at roughly 8 programs per day.
+days where CBC Music has a relatively large number of programs. This tends to be about 8 programs
+per day. 
