@@ -1,7 +1,7 @@
 import boto3
 import datetime
 import json
-from config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, UTC_OFFSET
+from config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_S3_BUCKET, UTC_OFFSET
 
 def upload_s3(playlog):
 
@@ -17,4 +17,4 @@ def upload_s3(playlog):
 
     key = "playlog-" + now.strftime("%Y-%m-%d") + ".json"
 
-    s3.put_object(Body=playlog_string, Bucket='cbc-radio-2-spotify', Key=key)
+    s3.put_object(Body=playlog_string, Bucket=AWS_S3_BUCKET, Key=key)
