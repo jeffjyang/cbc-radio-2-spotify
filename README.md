@@ -33,8 +33,8 @@ $ deactivate
 3. Into `config.py`, paste your `Client ID` and `Client Secret`, and your Spotify username.
 4. Go to your Spotify account, and create 10 empty playlists
 5. For each of your playlists paste the playlist id into `config.py`
-  - Navigate to each of your playlists in the Spotify web player, your playlist id will be in the url
-  (i.e. https://open.spotify.com/user/[username]/playist/[playlist_id])
+    - Navigate to each of your playlists in the Spotify web player, your playlist id will be in the url
+    (i.e. https://open.spotify.com/user/[username]/playist/[playlist_id])
 6. Run `python3 spotify_token_cli_tool.py` to generate a Spotify access token that will be used by the script
 
 ## AWS setup
@@ -53,7 +53,7 @@ the canonical user ID for your IAM user
 ### Lambda
 1. Create a Python 3.6 runtime AWS Lambda function.
 2. Add an CloudWatch Events trigger with the following scheduled rule: `cron(0 7 * * ? *)`
-  - Note this is assuming PDT timezone
+    - Note this is assuming PDT timezone
 
 # Deployment
 
